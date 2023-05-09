@@ -5,6 +5,7 @@ import static android.app.ProgressDialog.show;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -26,6 +27,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.myapp.UtilisService.SharedPreferenceClass;
 import com.example.myapp.UtilisService.UtilService;
 
 import org.json.JSONException;
@@ -45,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private ProgressBar progressBar;
     UtilService utilService;
+    SharedPreferenceClass sharedPreferenceClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         tv = findViewById(R.id.textViewNewUser);
         progressBar = findViewById(R.id.progress_Bar);
         utilService = new UtilService();
+        sharedPreferenceClass = new SharedPreferenceClass(this);
 
         //when button is clicked, the function is executed
         btn.setOnClickListener(new View.OnClickListener() {
@@ -68,12 +72,6 @@ public class LoginActivity extends AppCompatActivity {
                 if(validate(view)) {
                     loginUser(view);
                 }
-//                if(username.length()==0 || password.length()==0) {
-//                    Toast.makeText(getApplicationContext(), "Please fill All details", Toast.LENGTH_SHORT).show();
-//                }else{
-//                    Toast.makeText(getApplicationContext(), "Login Success", Toast.LENGTH_SHORT).show();
-//                }
-
             }
         });
 
@@ -102,8 +100,13 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     if (response.getBoolean("success")) {
                         String token = response.getString("token");
-                        Toast.makeText(LoginActivity.this, token, Toast.LENGTH_LONG).show();
-//                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        String userName = response.getString("UserName");
+                        String userEmail = response.getString("UserEmail");
+                        sharedPreferenceClass.setValue_string("token", token);
+                        sharedPreferenceClass.setValue_string("username", userName);
+                        sharedPreferenceClass.setValue_string("useremail", userEmail);
+                        Toast.makeText(LoginActivity.this, token, Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     }
                     progressBar.setVisibility(View.GONE);
                 } catch (JSONException e) {
@@ -119,7 +122,7 @@ public class LoginActivity extends AppCompatActivity {
                     try {
                         String res = new String(response.data, HttpHeaderParser.parseCharset(response.headers, "utf-8"));
                         JSONObject obj = new JSONObject(res);
-                        Toast.makeText(LoginActivity.this, obj.getString("msg"), Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, obj.getString("msg"), Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.GONE);
                     } catch (JSONException | UnsupportedEncodingException je) {
                         je.printStackTrace();
@@ -165,5 +168,17 @@ public class LoginActivity extends AppCompatActivity {
             isValid = false;
         }
         return isValid;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        SharedPreferences wepose_pref = getSharedPreferences("user_wepose", MODE_PRIVATE);
+
+        if(wepose_pref.contains("token")) {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
     }
 }

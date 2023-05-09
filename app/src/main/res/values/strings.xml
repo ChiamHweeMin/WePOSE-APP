@@ -1,3 +1,75 @@
 <resources>
     <string name="app_name">MyApp</string>
+    <string name="title_home"><font size="12">Home</font></string>
+    <string name="title_description"><font size="12">Description</font></string>
+    <string name="title_summary"><font size="12">Summary</font></string>
+    <string name="title_user_profile"><font size="12">User Profile</font></string>
+    <string name="title_initial">Initialization</string>
+    <string name="title_setting">Settings</string>
+    <string name="title_logout">Log Out</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_toolbar">WePOSE</string>
+    <string name="title_toolbar2">Initialization</string>
+    <string name="title_activity_logout">LogoutActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="desc_text">
+        WePOSE, an android application, is implemented to receive data from sensor network via Bluetooth for real-time sensor data processing, data logging, and instantaneous feedback.\n\n
+        Wearable Posture Body Detection and Monitoring via Mobile App Visualization and Analysis project is a wearable technology solution designed to automatically monitor a user’s posture position for sitting through the use of a non-invasive wearable system and automatically provide algorithm feedback to alert the user in case of an unhealthy postural situations, such as sitting with a hunchback, to improve posture habits and prevent posture-related health problems.\n\n
+        The project involves the development of a wearable posture body detection and monitoring system using Arduino which consists of IMU sensor to capture and analyze the user’s body movement and orientation. A vibration motor is used to generate vibration feedback to acquire the user’s awareness of their own posture.
+    </string>
+    <string name="title_howToUse">How To Use?</string>
+    <string name="howToUse">
+        \n 01. Setup Bluetooth Connection\n
+        02. Wear the device at the body\'s back\n
+        03. Turn on the device\n
+        04. Initialization (first-time user only)\n
+        05. Start/Stop Activity in app
+    </string>
+    <string name="textFirstTimeUser">
+        \nFirst-time user has to do initialization setup for one minute to record the position of their good sitting posture before they can proceed for monitoring of bad posture.
+    </string>
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
+        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
+        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
+        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
+        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
+        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
+        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
+        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
+        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
+        bibendum, vel congue leo egestas.\n\n
+        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
+        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
+        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
+        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
+        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
+        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
+        est.\n\n
+        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
+        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
+        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
+        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
+        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
+        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
+        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
+        convallis.\n\n
+        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
+        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
+        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
+        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
+        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
+        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+    </string>
+    <string name="title_activity_setting">SettingActivity</string>
+    <string name="title_activity_edit_user_name">EditUserNameActivity</string>
+
 </resources>

@@ -3,6 +3,7 @@ package com.example.myapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -24,6 +25,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.myapp.UtilisService.SharedPreferenceClass;
 import com.example.myapp.UtilisService.UtilService;
 
 import org.json.JSONException;
@@ -35,13 +37,14 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText edUsername, edEmail, edPassword;
+    private EditText edUsername, edEmail, edPassword, edConfirmPassword;
     private Button btn;
     private TextView tv;
-    private String username, email, password;
+    private String username, email, password, confirmPassword;
 
     ProgressBar progressBar;
     UtilService utilService;
+    SharedPreferenceClass sharedPreferenceClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +54,12 @@ public class RegisterActivity extends AppCompatActivity {
         edUsername = findViewById(R.id.editTextRegUsername);
         edEmail = findViewById(R.id.editTextRegEmail);
         edPassword = findViewById(R.id.editTextRegPassword);
+        edConfirmPassword = findViewById(R.id.editTextConfirmPassword);
         btn = findViewById(R.id.buttonRegister);
         tv = findViewById(R.id.textViewExistingUser);
         utilService = new UtilService();
         progressBar = findViewById(R.id.progress_Bar);
+        sharedPreferenceClass = new SharedPreferenceClass(this);
         //when button is clicked, the function is executed
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
                 username = edUsername.getText().toString();
                 email = edEmail.getText().toString();
                 password = edPassword.getText().toString();
+                confirmPassword = edConfirmPassword.getText().toString();
 
                 if (validate(view)) {
                     registerUser(view);
@@ -101,10 +107,10 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void registerUser(View view) {
         progressBar.setVisibility(View.VISIBLE);
-
         final HashMap<String, String> params = new HashMap<>();
         params.put("UserName", username);
         params.put("UserPassword", password);
+        params.put("UserConfirmPassword", confirmPassword);
         params.put("UserEmail", email);
 
         String apiKey = "https://weposeapi-production.up.railway.app/registerUser";
@@ -116,7 +122,8 @@ public class RegisterActivity extends AppCompatActivity {
                 try {
                     if (response.getBoolean("success")) {
                         String token = response.getString("msg");
-                        Toast.makeText(RegisterActivity.this, token, Toast.LENGTH_LONG).show();
+//                        sharedPreferenceClass.setValue_string("token", token);
+                        Toast.makeText(RegisterActivity.this, token, Toast.LENGTH_SHORT).show();
                     }
                     progressBar.setVisibility(View.GONE);
                     startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
@@ -133,7 +140,7 @@ public class RegisterActivity extends AppCompatActivity {
                     try {
                         String res = new String(response.data, HttpHeaderParser.parseCharset(response.headers, "utf-8"));
                         JSONObject obj = new JSONObject(res);
-                        Toast.makeText(RegisterActivity.this, obj.getString("msg"), Toast.LENGTH_LONG).show();
+                        Toast.makeText(RegisterActivity.this, obj.getString("msg"), Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.GONE);
                     } catch (JSONException | UnsupportedEncodingException je) {
                         je.printStackTrace();
@@ -210,5 +217,16 @@ public class RegisterActivity extends AppCompatActivity {
 //            return false;
 //        }
 //    };
+
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//
+//        SharedPreferences wepose_pref = getSharedPreferences("user_wepose", MODE_PRIVATE);
+//        if(wepose_pref.contains("token")) {
+//            startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+//            finish();
+//        }
+//    }
 
 }
