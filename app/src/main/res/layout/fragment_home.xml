@@ -10,6 +10,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" >
 
@@ -19,23 +20,107 @@
             android:orientation="vertical" >
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/xAccLabelTextView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:text="Today"
-                android:textAlignment="center"
-                android:textSize="20dp" />
+                android:text="X Acceleration:"
+                android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/textViewHome"
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="5dp"
-                android:text="Main Fragment"
-                android:textAlignment="center"
-                android:textSize="25dp" />
+                android:id="@+id/xAccTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yAccLabelTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Y Acceleration:"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yAccTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/zAccLabelTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Z Acceleration:"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/zAccTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/xGyrLabelTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="X Gyroscope:"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/xGyrTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yGyrLabelTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Y GyroScope:"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yGyrTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/zGyrLabelTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Z Gyroscope:"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/zGyrTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:textSize="20sp" />
+
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="40dp"-->
+<!--                android:text="Today"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textSize="20dp" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/textViewHome"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="350dp"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:text="Main Fragment"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textSize="25dp" />-->
 
             <RelativeLayout
                 android:layout_width="wrap_content"
