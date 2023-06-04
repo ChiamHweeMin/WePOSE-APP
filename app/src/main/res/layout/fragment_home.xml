@@ -10,7 +10,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" >
 
@@ -19,89 +19,45 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/lineChartPitch"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/lineChartRoll"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
             <TextView
-                android:id="@+id/xAccLabelTextView"
+                android:id="@+id/pitchLabelTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="X Acceleration:"
+                android:text="Pitch:"
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/xAccTextView"
+                android:id="@+id/pitchTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0.0"
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/yAccLabelTextView"
+                android:id="@+id/rollLabelTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Y Acceleration:"
+                android:text="Roll:"
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/yAccTextView"
+                android:id="@+id/rollTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0.0"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/zAccLabelTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Z Acceleration:"
-                android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/zAccTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0.0"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/xGyrLabelTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="X Gyroscope:"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/xGyrTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0.0"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/yGyrLabelTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Y GyroScope:"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/yGyrTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0.0"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/zGyrLabelTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Z Gyroscope:"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/zGyrTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0.0"
-                android:textSize="20sp" />
 
 <!--            <TextView-->
 <!--                android:layout_width="match_parent"-->
@@ -182,7 +138,7 @@
                     android:id="@+id/textViewSlouchCount"
                     android:layout_width="wrap_content"
                     android:layout_height="38dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="30dp"
                     android:layout_marginBottom="30dp"
                     android:text="Slouched Count:"
@@ -193,7 +149,7 @@
                     android:id="@+id/editTextSlouchCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="1dp"
                     android:layout_toRightOf="@id/textViewSlouchCount"
                     android:backgroundTint="#00FFFFFF"
                     android:ems="10"

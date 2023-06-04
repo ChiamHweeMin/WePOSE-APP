@@ -102,9 +102,19 @@ public class LoginActivity extends AppCompatActivity {
                         String token = response.getString("token");
                         String userName = response.getString("UserName");
                         String userEmail = response.getString("UserEmail");
+                        Float meanPitch = (float) response.getDouble("meanPitch");
+                        Float meanRoll = (float) response.getDouble("meanRoll");
+                        sharedPreferenceClass.setValue_float("meanPitch", meanPitch);
+                        sharedPreferenceClass.setValue_float("meanRoll", meanRoll);
                         sharedPreferenceClass.setValue_string("token", token);
                         sharedPreferenceClass.setValue_string("username", userName);
                         sharedPreferenceClass.setValue_string("useremail", userEmail);
+//                        if (!response.isNull("meanPitch") && !response.isNull("meanRoll")) {
+//                            Float meanPitch = (float) response.getDouble("meanPitch");
+//                            Float meanRoll = (float) response.getDouble("meanRoll");
+//                            sharedPreferenceClass.setValue_float("meanPitch", meanPitch);
+//                            sharedPreferenceClass.setValue_float("meanRoll", meanRoll);
+//                        }
                         Toast.makeText(LoginActivity.this, token, Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     }

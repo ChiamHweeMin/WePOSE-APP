@@ -37,6 +37,15 @@ public class SharedPreferenceClass {
         prefsEditor.putString(key, value).commit();
     }
 
+    //float
+    public float getValue_float(String key) {
+        return appShared.getFloat(key, 0.0f);
+    }
+
+    public void setValue_float(String key, float value) {
+        prefsEditor.putFloat(key, value).commit();
+    }
+
     //boolean
     public boolean getValue_boolean(String key) {
         return appShared.getBoolean(key, false);
