@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="5dp"
+    android:layout_margin="3dp"
+    android:id="@+id/accordian_title"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/task_date"
+            android:layout_centerVertical="true"
+            android:text="Date"
+            android:textSize="20sp"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/accordian_body"
+        android:padding="5dp"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_elapsedTime"
+            android:text="ElapsedTime:"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp" />
+
+        <TextView
+            android:id="@+id/task_elapsedTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_toEndOf="@+id/textView_elapsedTime"
+            android:text="0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_slouchCount"
+            android:text="SlouchCount: "
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="35dp" />
+
+        <TextView
+            android:id="@+id/task_slouchCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginRight="10dp"
+            android:layout_toEndOf="@+id/textView_slouchCount"
+            android:text="0" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

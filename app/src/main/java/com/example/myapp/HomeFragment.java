@@ -3,6 +3,7 @@ package com.example.myapp;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.icu.text.SimpleDateFormat;
@@ -270,27 +271,24 @@ public class HomeFragment extends Fragment {
                     timer = null;
                 }
 
-//                Date currentDate = new Date();
-//                SimpleDateFormat sdf = null;
-//                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-//                    sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-//                }
-//                String formattedDate = null;
-//                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-//                    formattedDate = sdf.format(currentDate);
-//                }
-//
-//                Toast.makeText(getActivity(), formattedDate, Toast.LENGTH_LONG).show();
-//
-//                // Get the time from the chronometer
-//                long elapsedMillis = SystemClock.elapsedRealtime() - mChronometer.getBase();
-//                String elapsedMillisString = String.valueOf(elapsedMillis);
-//                Toast.makeText(getActivity(), elapsedMillisString, Toast.LENGTH_LONG).show();
+                Date currentDate = new Date();
+                SimpleDateFormat sdf = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                    sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                }
+                String formattedDate = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                    formattedDate = sdf.format(currentDate);
+                }
 
-//                // Get the slouch count from the editTextSlouchCount
-//                int slouchCount = Integer.parseInt(editTextSlouchCount.getText().toString());
-//
-//                sendDataToAPI(formattedDate, elapsedMillis, slouchCount);
+                // Get the time from the chronometer
+                long elapsedMillis = SystemClock.elapsedRealtime() - mChronometer.getBase();
+//                String elapsedMillisString = String.valueOf(elapsedMillis);
+
+                // Get the slouch count from the editTextSlouchCount
+                int slouchCount = Integer.parseInt(editTextSlouchCount.getText().toString());
+
+                sendDataToAPI(formattedDate, elapsedMillis, slouchCount);
 
             }
         });
@@ -304,6 +302,8 @@ public class HomeFragment extends Fragment {
                 lastPause = 0;
                 mStartButton.setEnabled(true);
                 mStopButton.setEnabled(false);
+                editTextSlouchCount.setText(String.valueOf(0));
+                prediction = 0;
             }
         });
 
@@ -329,10 +329,58 @@ public class HomeFragment extends Fragment {
         mChronometer.setText(customText);
     }
 
-//    public void sendDataToAPI(long time, int count) {
-//        String apiKey = "https://weposeapi-production.up.railway.app/WEPOSE/sendSlouchCount/"+userEmail;
-//
-//    }
+    public void sendDataToAPI(String date, long time, int count) {
+        final HashMap<String, String> params = new HashMap<>();
+        params.put("date", date);
+        params.put("ElapsedTime", String.valueOf(time));
+        params.put("SlouchCount", String.valueOf(count));
+
+        String apiKey = "https://weposeapi-production.up.railway.app/WEPOSE/sendSlouchCount/"+userEmail;
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
+                apiKey, new JSONObject(params), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    if (response.getBoolean("success")) {
+                        Toast.makeText(getActivity(), "Success send data", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                NetworkResponse response = error.networkResponse;
+                if(error instanceof ServerError && response != null) {
+                    try {
+                        String res = new String(response.data, HttpHeaderParser.parseCharset(response.headers, "utf-8"));
+                        JSONObject obj = new JSONObject(res);
+                        Toast.makeText(getActivity(), obj.getString("msg"), Toast.LENGTH_SHORT).show();
+                    } catch (JSONException | UnsupportedEncodingException je) {
+                        je.printStackTrace();
+                    }
+                }
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json");
+                return headers;
+            }
+        };
+
+        // set retry policy
+        int socketTime = 3000;
+        RetryPolicy policy = new DefaultRetryPolicy(socketTime,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        jsonObjectRequest.setRetryPolicy(policy);
+
+        // request add
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(jsonObjectRequest);
+    }
     public void receiveData(View view) {
 
         String apiKey = "https://weposeapi-production.up.railway.app/WEPOSE/predictSitPosture/"+userEmail;
@@ -343,7 +391,6 @@ public class HomeFragment extends Fragment {
             public void onResponse(JSONObject response) {
                 try {
                     if (response.getBoolean("success")) {
-//                        Toast.makeText(getActivity(), "Getting data...", Toast.LENGTH_SHORT).show();
                         pitch = (float) response.getDouble("pitch");
                         roll = (float) response.getDouble("roll");
                         prediction += response.getInt("prediction");

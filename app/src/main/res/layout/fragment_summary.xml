@@ -5,114 +5,29 @@
     android:layout_height="match_parent"
     tools:context=".SummaryFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycle_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:layout_alignParentTop="true" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progress_bar"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        />
+
     <TextView
+        android:id="@+id/empty_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Summary Fragment"
         android:textSize="25dp"
-        android:layout_centerInParent="true" />
-
-    <Button
-        android:id="@+id/buttonReceive"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="500dp"
-        android:text="Button" />
-
-
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:orientation="vertical">-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/xAccLabelTextView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="X Acceleration:"-->
-<!--            android:textSize="20sp" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/xAccTextView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="0.0"-->
-<!--            android:textSize="20sp" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/yAccLabelTextView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Y Acceleration:"-->
-<!--            android:textSize="20sp" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/yAccTextView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="0.0"-->
-<!--            android:textSize="20sp" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/zAccLabelTextView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Z Acceleration:"-->
-<!--            android:textSize="20sp" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/zAccTextView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="0.0"-->
-<!--            android:textSize="20sp" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/xGyrLabelTextView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="X Gyroscope:"-->
-<!--            android:textSize="20sp" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/xGyrTextView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="0.0"-->
-<!--            android:textSize="20sp" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/yGyrLabelTextView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Y GyroScope:"-->
-<!--            android:textSize="20sp" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/yGyrTextView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="0.0"-->
-<!--            android:textSize="20sp" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/zGyrLabelTextView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Z Gyroscope:"-->
-<!--            android:textSize="20sp" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/zGyrTextView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="0.0"-->
-<!--            android:textSize="20sp" />-->
-
-<!--    </LinearLayout>-->
-
-
-
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
 
 </RelativeLayout>

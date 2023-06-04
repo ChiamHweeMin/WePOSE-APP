@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
                 String userName = wepose_pref.getString("username", "");
                 if (item.getItemId() == R.id.navigation_home) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
-                    Toast.makeText(MainActivity.this, userName, Toast.LENGTH_SHORT).show();
                     return true;
                 }
                 if (item.getItemId() == R.id.navigation_description) {

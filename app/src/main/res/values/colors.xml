@@ -10,4 +10,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="green">#FF006400</color>
     <color name="grey">#FFD7D7D7</color>
+
+    <item name="orange" type="color">#D1A522</item>
+    <item name="darkblue" type="color">#03A9F4</item>
+    <integer-array name="androidcolors">
+        <item>@color/green</item>
+        <item>@color/orange</item>
+        <item>@color/red</item>
+        <item>@color/darkblue</item>
+    </integer-array>
 </resources>

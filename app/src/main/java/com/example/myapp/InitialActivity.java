@@ -38,7 +38,7 @@ public class InitialActivity extends AppCompatActivity {
 
     Toolbar toolbarInitial;
 
-    private TextView meanPitchTextView, meanRollTextView;
+    private TextView meanPitchTextView, meanRollTextView, textViewLogOut, textViewTime;
 
     private Button buttonInitial;
     private ProgressBar progressBar;
@@ -63,6 +63,8 @@ public class InitialActivity extends AppCompatActivity {
         meanRollTextView = findViewById(R.id.editTextMeanRoll);
         buttonInitial = findViewById(R.id.buttonInitial);
         progressBar = findViewById(R.id.progress_Bar);
+        textViewLogOut = findViewById(R.id.textViewLogOut);
+        textViewTime = findViewById(R.id.textViewTime);
 
         utilService = new UtilService();
         sharedPreferenceClass = new SharedPreferenceClass(this);
@@ -86,6 +88,7 @@ public class InitialActivity extends AppCompatActivity {
     }
 
     public void initialization(View view) {
+        textViewTime.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.VISIBLE);
 
         String apiKey = "https://weposeapi-production.up.railway.app/WEPOSE/initSitPosture/"+userEmail;
@@ -98,6 +101,8 @@ public class InitialActivity extends AppCompatActivity {
                     if (response.getBoolean("success")) {
                         progressBar.setVisibility(View.GONE);
                         Toast.makeText(InitialActivity.this, "Please log out and log in again", Toast.LENGTH_LONG).show();
+                        textViewTime.setVisibility(View.GONE);
+                        textViewLogOut.setVisibility(View.VISIBLE);
                     }
 
                 } catch (JSONException e) {
