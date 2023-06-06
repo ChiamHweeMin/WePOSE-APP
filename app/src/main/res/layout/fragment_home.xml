@@ -22,12 +22,12 @@
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/lineChartPitch"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="180dp" />
 
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/lineChartRoll"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="180dp" />
 
             <TextView
                 android:id="@+id/pitchLabelTextView"
@@ -57,36 +57,16 @@
                 android:text="0.0"
                 android:textSize="20sp" />
 
-
-
-<!--            <TextView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="40dp"-->
-<!--                android:text="Today"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textSize="20dp" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/textViewHome"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="350dp"-->
-<!--                android:layout_centerHorizontal="true"-->
-<!--                android:layout_centerVertical="true"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:text="Main Fragment"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textSize="25dp" />-->
-
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="2dp">
 
                 <Button
                     android:id="@+id/startButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="60dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="#BB9EED"
                     android:drawableLeft="@drawable/baseline_play_arrow_24"
@@ -112,6 +92,7 @@
                     android:layout_width="50dp"
                     android:layout_height="48dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="25dp"
                     android:layout_toRightOf="@+id/stopButton"
                     android:backgroundTint="#00FFFFFF"
                     android:drawableTop="@drawable/baseline_replay_24"

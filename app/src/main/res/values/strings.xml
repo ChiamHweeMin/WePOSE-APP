@@ -18,13 +18,13 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="desc_text">
-        WePOSE, an android application, is implemented to receive data from sensor network via Bluetooth for real-time sensor data processing, data logging, and instantaneous feedback.\n\n
+        WePOSE, an android application, is implemented to receive data from sensor network via WIFI for real-time sensor data processing, data logging, and instantaneous feedback.\n\n
         Wearable Posture Body Detection and Monitoring via Mobile App Visualization and Analysis project is a wearable technology solution designed to automatically monitor a user’s posture position for sitting through the use of a non-invasive wearable system and automatically provide algorithm feedback to alert the user in case of an unhealthy postural situations, such as sitting with a hunchback, to improve posture habits and prevent posture-related health problems.\n\n
-        The project involves the development of a wearable posture body detection and monitoring system using Arduino which consists of IMU sensor to capture and analyze the user’s body movement and orientation. A vibration motor is used to generate vibration feedback to acquire the user’s awareness of their own posture.
+        The project involves the development of a wearable posture body detection and monitoring system using Arduino which consists of IMU sensor to capture and analyze the user’s body movement and orientation. A vibration from phone is used to generate vibration feedback to acquire the user’s awareness of their own posture.
     </string>
     <string name="title_howToUse">How To Use?</string>
     <string name="howToUse">
-        \n 01. Setup Bluetooth Connection\n
+        \n 01. Setup WIFI Connection\n
         02. Wear the device at the body\'s back\n
         03. Turn on the device\n
         04. Initialization (first-time user only)\n

@@ -1,13 +1,20 @@
 package com.example.myapp;
 
 import static android.content.Context.MODE_PRIVATE;
+import static android.content.Context.VIBRATOR_SERVICE;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.icu.text.SimpleDateFormat;
 import android.icu.text.UFormat;
+import android.media.MediaPlayer;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -16,6 +23,8 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
 import android.os.SystemClock;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,7 +81,13 @@ public class HomeFragment extends Fragment {
     private Chronometer mChronometer;
     private TextView pitchTextView, rollTextView, editTextSlouchCount;
     Float pitch, roll, meanPitch, meanRoll;
-    int prediction;
+    int prediction, result;
+
+    Vibrator vibrator;
+
+    Ringtone ringtone;
+
+    MediaPlayer mediaPlayer;
 
     int x = 0;
     private long lastPause;
@@ -85,6 +100,15 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
+
+        Context context = requireContext();
+        vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+
+//        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+//        ringtone = RingtoneManager.getRingtone(context.getApplicationContext(), notification);
+//        mediaPlayer = MediaPlayer.create(context.getApplicationContext(), notification);
+
+
 
         sharedPreferenceClass = new SharedPreferenceClass(getActivity());
         SharedPreferences wepose_pref = this.getActivity().getSharedPreferences("user_wepose", MODE_PRIVATE);
@@ -245,6 +269,16 @@ public class HomeFragment extends Fragment {
                                 }
 
                                 x++;
+
+                                if(result == 1) {
+    //                            ringtone.play();
+    //                            mediaPlayer.start();
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                        vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+                                    }
+                                }
+        //                        mediaPlayer.stop();
+        //                        mediaPlayer.release();
                             }
                         });
                     }
@@ -273,11 +307,11 @@ public class HomeFragment extends Fragment {
 
                 Date currentDate = new Date();
                 SimpleDateFormat sdf = null;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
                 }
                 String formattedDate = null;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     formattedDate = sdf.format(currentDate);
                 }
 
@@ -394,8 +428,10 @@ public class HomeFragment extends Fragment {
                         pitch = (float) response.getDouble("pitch");
                         roll = (float) response.getDouble("roll");
                         prediction += response.getInt("prediction");
+                        result = response.getInt("prediction");
                         meanPitch = (float) response.getDouble("meanPitch");
                         meanRoll = (float) response.getDouble("meanRoll");
+
                     }
 
                 } catch (JSONException e) {
